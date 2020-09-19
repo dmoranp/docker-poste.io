@@ -5,7 +5,19 @@ services:
         container_name: poste
         restart: always
         network_mode: host
+        hostname: mail.softwec.dev
         environment:
            - HTTPS=ON
         volumes:
            - $PATH_MAIL_LOCAL:$PATH_MAIL_CONTAINER
+         ports:
+         - "25:25"
+         - "8000:80"
+         - "4433:443"
+         - "110:110"
+         - "143:143"
+         - "465:465"
+         - "587:587"
+         - "993:993"
+         - "995:995"
+         - "4190:4190"
