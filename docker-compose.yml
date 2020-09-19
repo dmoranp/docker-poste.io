@@ -4,14 +4,15 @@ services:
         image: analogic/poste.io
         container_name: poste
         restart: always
-        network_mode: host
         hostname: mail.softwec.dev
+        networks:
+           - network_poste
         environment:
            - HTTPS=ON
         ports:
            - "25:25"
            - "8000:80"
-           - "4433:443"
+           - "4455:443"
            - "110:110"
            - "143:143"
            - "465:465"
@@ -21,4 +22,7 @@ services:
            - "4190:4190"
         volumes:
            - $PATH_MAIL_LOCAL:$PATH_MAIL_CONTAINER
-         
+
+networks:
+    network_poste:
+         driver: bridge
